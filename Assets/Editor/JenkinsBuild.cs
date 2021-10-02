@@ -1,6 +1,8 @@
 ﻿// -------------------------------------------------------------------------------------------------
 // Assets/Editor/JenkinsBuild.cs
 // -------------------------------------------------------------------------------------------------
+
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -29,7 +31,27 @@ public class JenkinsBuild {
         string fullPathAndName = args.targetDir + args.appName + ".app";
         BuildProject(EnabledScenes, fullPathAndName, BuildTargetGroup.Standalone, BuildTarget.StandaloneOSX, BuildOptions.None);
     }
- 
+    
+    
+    static string APP_NAME = "Cube";
+    static string TARGET_DIR = "/Users/ahmad/Desktop/Build";
+
+    [MenuItem ("Custom/CI/Build Mac OS X")]
+    static void PerformMacOSXBuild ()
+    {
+        string appName = APP_NAME + ".app";
+        BuildProject(EnabledScenes, TARGET_DIR + "/" + appName, BuildTargetGroup.Standalone, BuildTarget.StandaloneOSX, BuildOptions.None);
+    }
+
+    [MenuItem ("Custom/CI/Build Android")]
+
+    public static void BuildAndroid()
+    {
+        string appName = APP_NAME + ".apk";
+        BuildProject(EnabledScenes, TARGET_DIR + "/" + appName, BuildTargetGroup.Standalone, BuildTarget.Android, BuildOptions.None);
+    }
+    
+
     // ------------------------------------------------------------------------
     // called from Jenkins
     // ------------------------------------------------------------------------
