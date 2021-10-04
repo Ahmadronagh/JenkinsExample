@@ -24,6 +24,7 @@ public class JenkinsBuild {
     // ------------------------------------------------------------------------
     // called from Jenkins
     // ------------------------------------------------------------------------
+    [MenuItem ("Custom/CI/Build Mac OS X")]
     public static void BuildMacOS()
     {
         var args = FindArgs();
@@ -34,9 +35,9 @@ public class JenkinsBuild {
     
     
     static string APP_NAME = "Cube";
-    static string TARGET_DIR = "/Users/ahmad/Desktop/Build";
+    static string TARGET_DIR = "C:\\Build";
 
-    [MenuItem ("Custom/CI/Build Mac OS X")]
+   
     static void PerformMacOSXBuild ()
     {
         string appName = APP_NAME + ".app";
@@ -48,7 +49,8 @@ public class JenkinsBuild {
     public static void BuildAndroid()
     {
         string appName = APP_NAME + ".apk";
-        BuildProject(EnabledScenes, TARGET_DIR + "/" + appName, BuildTargetGroup.Standalone, BuildTarget.Android, BuildOptions.None);
+        
+        BuildProject(EnabledScenes, TARGET_DIR + "\\" + appName, BuildTargetGroup.Standalone, BuildTarget.Android, BuildOptions.None);
     }
     
 
